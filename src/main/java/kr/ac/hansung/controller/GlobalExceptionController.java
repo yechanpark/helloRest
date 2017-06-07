@@ -12,9 +12,9 @@ import kr.ac.hansung.exception.UserDuplicatedException;
 import kr.ac.hansung.exception.UserNotFoundException;
 
 // 모든 컨트롤러에 대해 Exception Handling (Application Level)
-@ControllerAdvice
+@ControllerAdvice // Application Level에서 처리하도록 하는 Annotation
 public class GlobalExceptionController {
-	/* Exception Handlers - Exception 발생 시 수행된다. */ 
+	/* Exception Handlers - Exception 발생 시 수행된다. */
 	// UserNotFoundException에 대한 Exception Handler
 	@ExceptionHandler(UserNotFoundException.class)
 	// Body부분에 ErrorResponse에 대한 내용을 Response Body에 넣어서 넘긴다.
