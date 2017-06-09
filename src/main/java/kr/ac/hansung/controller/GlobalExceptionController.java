@@ -22,15 +22,16 @@ public class GlobalExceptionController {
 	// req변수는 error와 관련된 url정보를 얻기 위해 선언
 	public ResponseEntity<ErrorResponse> handleUserNotFoundException(HttpServletRequest req, UserNotFoundException ex) {
 
-		String requestURL = req.getRequestURI().toString();
+		// req.getRequestURI()와는 다르므로 주의
+		String requestURL = req.getRequestURL().toString();
 
 		ErrorResponse errorResponse = new ErrorResponse();
 		errorResponse.setRequestURL(requestURL);
 		errorResponse.setErrorCode("user.notfound.exception"); // 정의하기 나름
 		errorResponse.setErrorMsg("User with id " + ex.getUserId() + " not found");
 
-		// ErrorResponse를 Response메시지의 Body부분에 JSON Format으로 넣고, HttpStatus는
-		// "NOT_FOUND"
+		// ErrorResponse를 Response메시지의 Body부분에 JSON Format으로 넣고
+		// HttpStatus는 "NOT_FOUND"
 		return new ResponseEntity<ErrorResponse>(errorResponse, HttpStatus.NOT_FOUND);
 
 	}
