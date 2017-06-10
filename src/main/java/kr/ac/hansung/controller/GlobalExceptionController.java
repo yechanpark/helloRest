@@ -41,7 +41,7 @@ public class GlobalExceptionController {
 	public ResponseEntity<ErrorResponse> handleUserDuplicatedException(HttpServletRequest req,
 			UserDuplicatedException ex) {
 
-		String requestURL = req.getRequestURI().toString();
+		String requestURL = req.getRequestURL().toString();
 
 		ErrorResponse errorResponse = new ErrorResponse();
 		errorResponse.setRequestURL(requestURL);
